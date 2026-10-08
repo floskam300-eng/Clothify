@@ -1,172 +1,145 @@
-# Clothify - POS System for Clothing Stores
-Clothify is a modern Point-of-Sale (POS) system built for clothing stores. It offers features for inventory management, order management, and more, all integrated with a JavaFX frontend. The application is powered by Spring Boot and Hibernate for backend logic, with a MySQL database to store the data. JFoenix is used for the modern UI components to give a sleek, professional look.
-This project follows a layered architecture with clearly defined layers for Controller, Service, Repository, and Entities. It also provides enhanced security by using encryption for sensitive data.
-Clothify can be packaged into an executable .exe file using Launch4j for easier distribution.  
+# Clothify 👕🛒
 
-# Features  
+<p align="center">
+  <img src="ScreenShots/Home%20Page.png" alt="Clothify Home Screen" width="700" />
+</p>
 
-**Inventory Management**: Manage products, categories, and stock levels.  
-**Order Management**: Create, update, delete, and view customer orders.  
-**Staff Management**: Add, update, and view staff details.  
-**Supplier Management**: Manage suppliers for the products.  
-**User Authentication**: Admin and staff login using secure authentication.  
-**Reporting**: Generate various reports for sales, inventory, and suppliers.  
-**POS System**: Process orders, calculate totals, and apply discounts.  
-**Modern UI**: A JavaFX-based UI using JFoenix for sleek design.  
-**Encryption**: Secure user credentials with encryption.  
-**Database**: Use MySQL for persistent data storage.  
-**Packaging**: Package the app into an .exe using Launch4j for easy distribution.    
+<p align="center">
+  <strong>A Modern Point-of-Sale (POS) & Store Inventory Management Desktop System for Clothing Retailers built with JavaFX & JFoenix.</strong>
+</p>
 
-# Tech Stack  
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-11%2B-orange?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java" />
+  <img src="https://img.shields.io/badge/JavaFX-17-blue?style=for-the-badge" alt="JavaFX" />
+  <img src="https://img.shields.io/badge/UI-JFoenix%20Material%20Design-teal?style=for-the-badge" alt="JFoenix" />
+  <img src="https://img.shields.io/badge/Database-SQLite%20%2F%20MySQL-lightgrey?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite" />
+  <img src="https://img.shields.io/badge/Build-Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white" alt="Maven" />
+</p>
 
-**Java 11+**  
-**Spring Boot** (for the backend logic)  
-**Hibernate** (for ORM and database interaction)  
-**MySQL** (for the database)  
-**JavaFX** (for the frontend UI)  
-**JFoenix** (for Material Design UI components)  
-**Launch4j** (for packaging as an .exe file)  
-**Maven** (for dependency management and building)  
-**JasperReports** (for report generation)  
-**ModelMapper** (for object mapping)  
-**Lombok** (for reducing boilerplate code)    
+---
 
-# Prerequisites  
+## 📖 Overview
 
-Before you start, ensure you have the following installed:
+**Clothify** is an enterprise-grade desktop POS and inventory management application designed specifically for garment and fashion boutiques. It streamlines day-to-day retail operations, from fast item barcode scanning and receipt generation to supply tracking and employee management.
 
-**Java 11+** (preferably JDK 11)  
-**Maven** (for building the project)  
-**MySQL** (for the database)  
-**IDE** (like IntelliJ IDEA or Eclipse)  
-**Launch4j** (for packaging the project as .exe file)    
+Built upon a robust **Layered Enterprise Architecture** (Controller, Service, DAO/Repository, Entity, DTO) and utilizing **JavaFX 17** paired with **JFoenix Material Design**, Clothify delivers a fluid, responsive, and intuitive desktop experience.
 
-# Setup and Installation  
+---
 
-**Clone the repository**
-First, clone this repository to your local machine:  
+## ✨ Features
 
-```git clone https://github.com/RavinduChamodWickramage/Clothify.git```  
+- **🛒 Point-of-Sale (POS) Checkout**:
+  - Intuitive order processing and cart management.
+  - Automatic discount calculations, item sub-totals, and grand totals.
+  - Instant order confirmation and receipt generation.
+- **📦 Inventory & Stock Control**:
+  - Product catalog management with sizes, categories, and unit pricing.
+  - Real-time stock levels with quantity-on-hand tracking.
+- **🚚 Supplier & Supply Management**:
+  - Comprehensive supplier profiles and vendor directory.
+  - Supply purchase orders and restock shipment tracking.
+- **👥 Role-Based Access Control**:
+  - **Admin Dashboard**: System oversight, staff accounts management, inventory management, reports, and financial visibility.
+  - **Staff Dashboard**: Cashier operations, order processing, and customer checkouts.
+- **🔒 Security & Authentication**:
+  - Secure credential management with password hashing.
+  - Active session handling for Admin and Staff operators.
+- **💾 Zero-Configuration Out-of-the-Box Database**:
+  - Pre-configured with an embedded **SQLite** database (`Clothify.db`) that auto-initializes all tables and default administrator credentials on first launch.
+  - Optional enterprise MySQL configuration supported.
 
-# Import into IDE  
+---
 
-Open your IDE (IntelliJ IDEA, Eclipse, etc.)  
-Import the project as a Maven project  
-Set up JDK 11+ if it’s not already set    
+## 🖼️ User Interface & Screenshots
 
-# Database Configuration  
+| Admin Dashboard | Staff Dashboard |
+|:---:|:---:|
+| <img src="ScreenShots/Admin%20Dashboard%20Page.png" width="400" /> | <img src="ScreenShots/Staff%20Dashboard%20Page.png" width="400" /> |
 
-Create a MySQL database named Clothify:  
-```CREATE DATABASE Clothify;```  
+| Order Management (POS) | Product Inventory Management |
+|:---:|:---:|
+| <img src="ScreenShots/Order%20Management%20Page.png" width="400" /> | <img src="ScreenShots/Product%20Management%20Staff.png" width="400" /> |
 
-Run the schema script to set up the necessary tables:  
+| Supplier Management | Supply Order Management |
+|:---:|:---:|
+| <img src="ScreenShots/Supplier%20Management%20Page.png" width="400" /> | <img src="ScreenShots/Supply%20Management%20Page.png" width="400" /> |
+
+---
+
+## 🏗️ Architecture
+
+Clothify adheres to the **Layered Architectural Pattern** with complete decoupling:
+
 ```
--- Create the database and switch to it
-CREATE DATABASE Clothify;
-USE Clothify;
-
--- Create the Admin table to store admin users
-CREATE TABLE Admin (
-    AdminID VARCHAR(10) PRIMARY KEY,
-    Username VARCHAR(100) NOT NULL,
-    Password VARCHAR(30) NOT NULL,
-    PhoneNumber VARCHAR(15)
-);
-
--- Create the Staff table to store staff member details
-CREATE TABLE Staff (
-    StaffID VARCHAR(10) PRIMARY KEY,
-    Username VARCHAR(100) NOT NULL,
-    Password VARCHAR(100) NOT NULL,
-    FullName VARCHAR(100),
-    Address TEXT,
-    PhoneNumber VARCHAR(15),
-    NIC VARCHAR(15),
-    DOB DATE,
-    Salary DECIMAL(10,2)
-);
-
--- Create the Supplier table to store supplier details
-CREATE TABLE Supplier (
-    SupplierID VARCHAR(10) PRIMARY KEY,
-    Name VARCHAR(100),
-    Company VARCHAR(50),
-    Email VARCHAR(100),
-    PhoneNumber VARCHAR(15)
-);
-
--- Create the Product table to store product details
-CREATE TABLE Product (
-    ProductID VARCHAR(10) PRIMARY KEY,
-    Name VARCHAR(100),
-    Category VARCHAR(30),
-    Size VARCHAR(10),
-    UnitPrice DECIMAL(10,2),
-    QtyOnHand INT
-);
-
--- Create the Supply table to manage supply transactions (composite key)
-CREATE TABLE SupplyProduct (
-    SupplyID VARCHAR(10),
-    ProductID VARCHAR(10),
-    SupplierID VARCHAR(10),
-    UnitCost DECIMAL(10,2),
-    Qty INT,
-    Total DECIMAL(10,2),
-    DateAndTime DATETIME,
-    PRIMARY KEY (SupplyID, ProductID, SupplierID),
-    FOREIGN KEY (ProductID) REFERENCES Product(ProductID),
-    FOREIGN KEY (SupplierID) REFERENCES Supplier(SupplierID)
-);
-
--- Create the Order table to store customer orders
-CREATE TABLE Orders (
-    OrderID VARCHAR(10) PRIMARY KEY,
-    NetTotal DECIMAL(10,2),
-    TotalDiscount DECIMAL(10,2),
-    OrderDateAndTime DATETIME,
-    StaffID VARCHAR(10),
-    CustomerEmail VARCHAR(100),
-    CustomerPhoneNumber VARCHAR(10),
-    FOREIGN KEY (StaffID) REFERENCES Staff(StaffID) ON DELETE SET NULL
-);
-
--- Create the OrderDetail table to store the details of each product in an order
-CREATE TABLE OrderDetail (
-    OrderID VARCHAR(10),
-    ProductID VARCHAR(10),
-    UnitPrice DECIMAL(10,2),
-    Qty INT,
-    Discount DECIMAL(10,2),
-    Total DECIMAL(10,2),
-    PRIMARY KEY (OrderID, ProductID),
-    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
-    FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
-);
-```  
-
-Update the database connection details in the application.properties file located under src/main/resources:  
+src/main/java/
+├── controller/              # JavaFX FXML Form Controllers
+│   ├── admin/               # Admin dashboard and staff management controllers
+│   ├── order/               # POS order processing controller
+│   ├── product/             # Inventory and product form controller
+│   ├── staff/               # Staff portal controllers
+│   ├── supplier/            # Vendor management controllers
+│   └── supply/              # Restocking controllers
+├── db/                      # Database connection manager (SQLite auto-init)
+├── dto/                     # Data Transfer Objects
+├── entity/                  # Persistent entities
+├── repository/              # DAO (Data Access Object) Layer
+│   ├── custom/              # DAO interfaces
+│   └── custom/impl/         # DAO SQL implementations
+├── service/                 # Business logic service layer
+│   ├── custom/              # Service interfaces
+│   └── custom/impl/         # Service business rules
+└── util/                    # Alert, Session, and BCrypt Encryption helpers
 ```
-spring.datasource.url=jdbc:mysql://localhost:3306/Clothify
-spring.datasource.username=root
-spring.datasource.password=yourpassword
-spring.jpa.hibernate.ddl-auto=update
-```  
 
-# Running the Application  
+---
 
-Using IDE:  
-Run the ClothifyApplication.java class (Spring Boot application) from your IDE. This will start the application.  
-Using Maven Command:  
-Alternatively, you can use Maven to build and run the application:  
-```
-mvn clean install
-mvn spring-boot:run
-```  
+## 🛠️ Tech Stack & Dependencies
 
-# Acknowledgments  
+| Category | Technology |
+|---|---|
+| **Language & JDK** | Java 11+ |
+| **GUI Framework** | JavaFX 17 (Controls, FXML) |
+| **Material UI** | JFoenix (9.0.10) |
+| **Database** | SQLite JDBC (`sqlite-jdbc: 3.46.0.0`) & MySQL Connector |
+| **Object Mapping** | ModelMapper (3.2.1) |
+| **Boilerplate Reduction**| Project Lombok |
+| **Build & Dependency Tool** | Apache Maven |
 
-**JasperReports** for report generation.  
-**Hibernate** for ORM and database interaction.  
-**JavaFX** and **JFoenix** for the modern UI design.  
-**Spring Boot** for creating the backend.  
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [JDK 11+](https://www.oracle.com/java/technologies/downloads/) (JDK 17 recommended)
+- [Apache Maven](https://maven.apache.org/download.cgi) installed (`mvn -version`)
+
+### Installation & Run
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/floskam300-eng/Clothify.git
+   cd Clothify
+   ```
+
+2. **Build the project:**
+   ```bash
+   mvn clean compile
+   ```
+
+3. **Run the application:**
+   ```bash
+   mvn javafx:run
+   ```
+
+### Default Credentials
+
+Upon first execution, the SQLite database is automatically generated with a default administrator account:
+- **Username:** `admin`
+- **Password:** `admin123`
+
+---
+
+## 👤 Author
+
+- **Omar Shamy** - [GitHub Profile](https://github.com/floskam300-eng)
